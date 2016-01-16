@@ -1,6 +1,6 @@
 Read Me
 ==============
-A project required by boss and required by his boss. Quite a joke.    
+A project required by boss which is required by his boss. Quite a joke.    
 
 __mapping all the stores via baidu map in a single html file__    
     
