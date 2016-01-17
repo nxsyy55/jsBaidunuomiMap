@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<!-- <html lang="zh"> for chinese -->
+
+<head>
+    <title>Some tags</title>
+    <meta charset="utf-8">
+    <!-- 控制页面的大小 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- import the bootstrap css -->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+    <!-- import the two scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <!-- make the div will take the entire width of the screen -->
+    <div class="container-fluid">
+    <!-- try class="container" -->
+        <h1> This is a H1 tab</h1>
+        <p>size control := xs, sm, md, lg</p>
+
+        <h1> 3 column layout</h1>
+        <div class="row">
+            <div class="col-md-4" style="background-color:  #F76582"> 1 </div>
+            <div class="col-md-4" style="background-color:  #F76585"> 2 </div>
+            <div class="col-md-4" style="background-color:  #F76542"> 3 </div>
+    </div>
+    
+    <div class="container">
+        
+        <p> Highlight words or <mark>text using the mark tags.</mark></p>
+        
+        <blockquote>
+            This is a quote!
+            <footer>Bruce</footer>
+        </blockquote>
+
+        <h4>Things to do when you're bored</h4>
+        <dl>
+            <dt>Indoors</dt>
+                <dd>- take a np</dd>
+                <dd>- wath Netflix</dd>
+            <dt>Outdoors</dt>
+                <dd>Get home!</dd>
+        </dl>   
+
+        <p>Use code tag</p>
+        <code>x = list((1, 2))</code>
+        <p>Use the pre tag for multi line codes</p>
+        <pre>
+        def sum(x, y):
+            return x + y
+        </pre>
+
+        <p>This is supposed to be keyboard <kbd>Ctrl+Alt+Del</kbd></p>
+        <h4>Bootstrap built in color classes</h4>
+        <p class="text-muted">Text muted(light green).</p>
+        <p class="text-success">Text success.</p>
+        <p class="text-danger">Text danger(red).</p>
+
+        <p class="bg-success">built in color</p>
+        <p class="bg-danger">Text danger(red).</p>
+        
+    </div>
+
+    <div class="container">
+
+        <h2>Simple Table</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Sex</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>X</td>
+                    <td>25</td>
+                    <td>M</td>
+                </tr>
+                <tr>
+                    <td>Y</td>
+                    <td>52</td>
+                    <td>M</td>
+                </tr>
+                <tr>
+                    <td>XX</td>
+                    <td>3</td>
+                    <td>F</td>
+                </tr>   
+            </tbody>    
+        </table>
+
+
+        <h2>Condensed Table</h2>
+        <table class="table table-condensed">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Sex</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>X</td>
+                    <td>25</td>
+                    <td>M</td>
+                </tr>
+                <tr>
+                    <td>Y</td>
+                    <td>52</td>
+                    <td>M</td>
+                </tr>
+                <tr>
+                    <td>XX</td>
+                    <td>3</td>
+                    <td>F</td>
+                </tr>   
+            </tbody>    
+        </table>
+
+
+        <h2>Striped Table</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Sex</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>X</td>
+                    <td>25</td>
+                    <td>M</td>
+                </tr>
+                <tr>
+                    <td>Y</td>
+                    <td>52</td>
+                    <td>M</td>
+                </tr>
+                <tr>
+                    <td>XX</td>
+                    <td>3</td>
+                    <td>F</td>
+                </tr>   
+            </tbody>    
+        </table>
+    </div>
+    
+    <div>
+        <img src="image/fantanstic.jpg" class="img-rounded" width = "230" height="230">
+        <img src="image/fantanstic.jpg" class="img-circle" width = "230" height="230">
+        <!-- response and nonresponse -->
+        <img src="image/fantanstic.jpg" class="img-responsive">
+        <h2>The above one will autosize itself.</h2>
+        <img src="image/fantanstic.jpg">
+
+        <h2>Embed responsive videos</h2>
+            
+            <div class = "embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" width="854" height="480" src="https://www.youtube.com/embed/JNAqaNQc2qk?list=PL6gx4Cwl9DGBPw1sFodruZUPheWVKchlM" frameborder="0" allowfullscreen></iframe>
+            </div>
+    </div>  
+
+</body>
+</html>
