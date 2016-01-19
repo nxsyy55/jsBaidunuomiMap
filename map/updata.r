@@ -1,0 +1,6 @@
+library(readr)
+dat <- read_csv("locations.csv")
+long <- toString(dat[, 4])
+lat <- toString(dat[, 5])
+str <- paste("var long = [", long, "];", "var lat = [", lat, "];")
+write(str, file = 'dataDetail.js')

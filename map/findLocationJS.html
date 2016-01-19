@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf8" />
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	<title>批量地址</title>
+	<style type="text/css">
+		body, html{width: 100%;height: 100%;margin:0;font-family:"微软雅黑";}
+		#l-map{height:300px;width:100%;}
+		#r-result{width:100%; font-size:14px;line-height:20px;}
+	</style>
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=Zi5NaQzHS9bakF87GklaIGd8"></script>
+</head>
+<body>
+	<div id="l-map"></div>
+	<div id="r-result">
+		<input type="button" value="批量地址解析" onclick="bdGEO()" />
+		<div id="result"></div>
+	</div>
+</body>
+</html>
+<script type="text/javascript">
+
+var map = new BMap.Map("l-map");
+map.centerAndZoom(new BMap.Point(121.269945,31.86713), 13);
+map.enableScrollWheelZoom(true);
+var index = 0;
+var myGeo = new BMap.Geocoder();
+
+var adds = [
+"胶州路990号近长寿路",
+"胶州路853号",
+"澳门路743号",
+"常德路1235号,长寿路口(全家超市旁)",
+"新会路137号",
+"昌平路昌化路口",
+"澳门路727号",
+"镇坪路",
+"常德路澳门路路口",
+"常德路沪西清真寺门口",
+"澳门路477号"
+];
+
+function bdGEO(){
+	var add = adds[index];
+	geocodeSearch(add);
+	index++;
+}
+
+function geocodeSearch(add){
+	
+	if(index < adds.length){
+		setTimeout(window.bdGEO,400);
+	}
+
+	myGeo.getPoint(add, function(point){
+		if (point) {
+			document.getElementById("result").innerHTML += point.lng + "," + point.lat + "," +add +"</br>";
+		}
+	}, "上海市");
+}
+</script>

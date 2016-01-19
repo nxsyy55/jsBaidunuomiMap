@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title> Detailed </title>
+
+        <script src="http://api.map.baidu.com/api?v=2.0&ak=Zi5NaQzHS9bakF87GklaIGd8"></script>
+        <script type="text/javascript" src="dataDetail.js"></script>
+    </head>
+
+    <style type="text/css">
+        html,body{
+        margin:0;
+        width:100%;
+        height:100%;
+        background:#ffffff;
+    }
+    #map{
+        width:100%;
+        height:100%;
+    }
+    </style>
+
+    <body>
+        <div id="map"></div>
+
+        <script type="text/javascript">
+        // put codes here
+        var map = new BMap.Map('map');
+        var cen = new BMap.Point(121.570161,31.219631);
+        map.centerAndZoom(cen, 10);
+        map.enableScrollWheelZoom(true);
+        map.addControl(new BMap.NavigationControl());
+
+        // do the loop
+        var points = [];  
+         // 添加海量点数据
+        for (var i = 0; i < long.length; i++) {
+            points.push(new BMap.Point(long[i], lat[i]));
+        }
+
+        var options = {
+            size: BMAP_POINT_SIZE_TINY,
+            shape: BMAP_POINT_SHAPE_STAR,
+            color: '#990099' //'#4349C7'
+        }
+
+        var pointCollection = new BMap.PointCollection(points, options);
+
+        // pointCollection.addEventListener('click', function (e) {
+        //     alert('格子里的门店数是：' + numbers[points.indexOf(e.point)]);  
+        // });
+        map.addOverlay(pointCollection);   
+
+        </script>
+    </body>
+</html>
