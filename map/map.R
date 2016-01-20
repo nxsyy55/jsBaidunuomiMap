@@ -1,6 +1,6 @@
 rm(list = ls())
-
-n <- 10
+library(readr)
+n <- 20
 
 longl <- 121.026408
 latd <- 30.662036
@@ -38,7 +38,7 @@ for (i in 1:n){
     }
 }
 
-dt <- read.csv("locations.csv", header = T)
+dt <- read_csv("locations.csv")
 names(dt) <- c('name', 'dist', 'address', 'long', 'lat')
 
 final <- as.data.frame(final)

@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8"/>
-        <title> hehehe </title>
+        <title> hehehe2 </title>
         <script src="http://api.map.baidu.com/api?v=2.0&ak=Zi5NaQzHS9bakF87GklaIGd8"></script>
         <script type="text/javascript" src="data20.js"></script>
     </head>
@@ -29,30 +29,21 @@
 // put codes here
 var map = new BMap.Map('map', {});
 var cen = new BMap.Point(121.570161,31.219631);
-map.centerAndZoom(cen, 13);
+map.centerAndZoom(cen, 15);
 map.enableScrollWheelZoom(true);
 map.addControl(new BMap.NavigationControl());
 
-
-
-var points = [];  
-
-for (var i = 0; i < long.length; i++) {
-    points.push(new BMap.Point(long[i], lat[i]));
+function addMarker(point, text){
+    var marker = new BMap.Marker(point);
+    map.addOverlay(marker);
+    var label = new BMap.Label(text, {offset:new BMap.Size(20,-10)});
+    marker.setLabel(label);
 }
 
-var options = {
-    size: BMAP_POINT_SIZE_BIG,
-    shape: BMAP_POINT_SHAPE_CIRCLE,
-    color: '#1A69F4' //'#4349C7'
+for(var i = 0; i < 1000; i++){
+    var pt = new BMap.Point(long[i], lat[i]);
+    addMarker(pt, numbers[i]);
 }
-
-var pointCollection = new BMap.PointCollection(points, options);
-
-pointCollection.addEventListener('click', function (e) {
-    alert('格子里的门店数是：' + numbers[points.indexOf(e.point)]);  
-});
-map.addOverlay(pointCollection); 
 
 var longl = 121.026408;
 var longr = 121.962232;
