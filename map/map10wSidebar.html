@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title> 唯我独尊 </title>
+        <script type="text/javascript" src="data.js"></script>
+    </head>
+    <style type="text/css">
+
+    html,body{
+    margin:0;
+    width:100%;
+    height:100%;
+    background:#ffffff;
+    }
+
+    #map{
+    width:75%;
+    height:100%;
+    float:left;
+    }
+
+    #result{
+        width:25%; 
+        font-size:16px;
+        line-height:20px;
+        float:right;
+    }
+
+    </style>
+    <script src="http://api.map.baidu.com/api?v=2.0&ak=Zi5NaQzHS9bakF87GklaIGd8">
+    </script>
+    <body>
+        <div id="map"></div>
+        <div id="result">
+            <div id="showcase"> 
+                <p>Info Here</p>
+                <input type="color"/>
+            </div>
+
+            <div>
+                <input type="button" value="Clear" onclick="clr"/>
+                <input type="button" value="Jump" onclick ="location.href='map10.html'"/>
+            </div>
+        </br>
+        </div>
+    </body>
+</html>
+<script type="text/javascript">
+// put codes here
+var map = new BMap.Map('map', {});
+var cen = new BMap.Point(121.570161,31.219631);
+map.centerAndZoom(cen, 15);
+map.enableScrollWheelZoom(true);
+map.addControl(new BMap.NavigationControl());
+
+// do the loop
+var points = [];
+for (var i = 0; i < long.length; i++) {
+points.push(new BMap.Point(long[i], lat[i]));
+}
+
+// point style
+var options = {
+size: BMAP_POINT_SIZE_HUGE,
+shape: BMAP_POINT_SHAPE_RHOMBUS,
+color: '#FF0000' //'#4349C7'
+}
+
+var pointCollection = new BMap.PointCollection(points, options);
+pointCollection.addEventListener('click', function (e) {
+// alert('格子里的门店数是：' + numbers[points.indexOf(e.point)]);
+document.getElementById("result").innerHTML +=  '格子里的门店数是：' + numbers[points.indexOf(e.point)] + "</br>";
+});
+map.addOverlay(pointCollection);
+var longl = 121.026408;
+var longr = 121.962232;
+var latd = 30.662036;
+var latu = 31.621866;
+var hl = [
+30.662036,
+30.7580190,
+30.8540020,
+30.9499850,
+31.0459680,
+31.1419510,
+31.2379340,
+31.3339170,
+31.4299000,
+31.621866,
+31.5258830
+];
+var vl = [
+121.026408,
+121.1199904,
+121.2135728,
+121.3071552,
+121.4007376,
+121.4943200,
+121.5879024,
+121.6814848,
+121.7750672,
+121.962232,
+121.8686496
+];
+// draw the h line
+for (var i = 0; i < hl.length; i ++){
+var polylineTem = new BMap.Polyline([new BMap.Point(longl, hl[i]),
+new BMap.Point(longr, hl[i])],
+{strokeColor:"blue", strokeWeight:3, strokeOpacity:0.5});
+map.addOverlay(polylineTem);
+}
+for (var i = 0; i < vl.length; i ++){
+var polylineTem = new BMap.Polyline([new BMap.Point(vl[i], latu),
+new BMap.Point(vl[i], latd)],
+{strokeColor:"blue", strokeWeight:6, strokeOpacity:0.5});
+map.addOverlay(polylineTem);
+}
+
+function clr() {
+    document.getElementById("result").normalize();
+}
+</script>

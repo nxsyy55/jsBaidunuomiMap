@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title> 哇哈哈 </title>
+        <script src="http://api.map.baidu.com/api?v=2.0&ak=Zi5NaQzHS9bakF87GklaIGd8"></script>
+    </head>
+
+    <style type="text/css">
+    
+    html,body{
+        margin:0;
+        width:100%;
+        height:100%;
+    }
+
+    #map{
+        width:100%;
+        height:100%;
+    }
+    </style>
+
+    <body>
+        <div id="map"></div>
+    </body>
+</html>
+
+<script type="text/javascript">
+
+var map = new BMap.Map('map');
+var cen = new BMap.Point(121.570161,31.219631);
+map.centerAndZoom(cen, 11);
+map.enableScrollWheelZoom(true);
+// map.addControl(new BMap.NavigationControl());
+
+// var cr = new map.CopyrightControl({anchor: BMAP_ANCHOR_BOTTOM_LEFT});
+// cr.addCopyright({id: 1, content:  "<a href='#' style='font-size:20px;background:yellow'>我是自定义版权控件呀</a>"});
+// map.addControl(cr);
+
+var distName = ["上海市黄浦区","上海市徐汇区","上海市长宁区",
+                "上海市静安区","上海市普陀区","上海市虹口区","上海市杨浦区","上海市闵行区",
+                "上海市宝山区", "上海市嘉定区","上海市浦东新区","上海市金山区","上海市松江区",
+                "上海市青浦区","上海市奉贤区","上海市崇明县"]; /*16*/
+
+var color = ["#0F32FF","#1E33FF","#2D33FF","#3C34FF","#4B34FF","#5A35FF","#6935FF","#7836FF",
+             "#8736FF","#9637FF","#A537FF","#B438FF","#C338FF","#D239FF","#E139FF","#F03AFF"];
+
+var num = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
+
+function getBoundary(add, col, number) {       
+    var bdary = new BMap.Boundary();
+    var col2 = col;
+    var number2 = number;
+    bdary.get(add, function(rs) {    
+        var count = rs.boundaries.length;
+        if (count === 0) {
+            alert('未能获取当前输入行政区域');
+            return ;
+        }
+
+        for (var i = 0; i < count; i++) {
+            var ply = new BMap.Polygon(rs.boundaries[i], {strokeWeight: 0, fillColor: col2});
+            ply.addEventListener("click", function(e){
+                alert("Some number here" + number2)});
+            map.addOverlay(ply); 
+        };
+    });   
+};
+
+for (var j = 0; j < distName.length; j++) {
+    getBoundary(distName[j], color[j], num[j]);
+};   
+
+map.setMapStyle ({
+    styleJson: [{
+        featureType: 'water',
+        elementType: 'all',
+        stylers: {
+            color: '#044161'
+        }
+    }, {
+        featureType: 'land',
+        elementType: 'all',
+        stylers: {
+            color: '#091934'
+        }
+    }, {
+        featureType: 'boundary',
+        elementType: 'geometry',
+        stylers: {
+            color: '#064f85'
+        }
+    }, {
+        featureType: 'railway',
+        elementType: 'all',
+        stylers: {
+            visibility: 'off'
+        }
+    }, {
+        featureType: 'highway',
+        elementType: 'geometry',
+        stylers: {
+            color: '#004981'
+        }
+    }, {
+        featureType: 'highway',
+        elementType: 'geometry.fill',
+        stylers: {
+            color: '#005b96',
+            lightness: 1
+        }
+    }, {
+        featureType: 'highway',
+        elementType: 'labels',
+        stylers: {
+            visibility: 'off'
+        }
+    }, {
+        featureType: 'arterial',
+        elementType: 'geometry',
+        stylers: {
+            color: '#004981',
+            lightness: -39
+        }
+    }, {
+        featureType: 'arterial',
+        elementType: 'geometry.fill',
+        stylers: {
+            color: '#00508b'
+        }
+    }, {
+        featureType: 'poi',
+        elementType: 'all',
+        stylers: {
+            visibility: 'off'
+        }
+    }, {
+        featureType: 'green',
+        elementType: 'all',
+        stylers: {
+            color: '#056197',
+            visibility: 'off'
+        }
+    }, {
+        featureType: 'subway',
+        elementType: 'all',
+        stylers: {
+            visibility: 'off'
+        }
+    }, {
+        featureType: 'manmade',
+        elementType: 'all',
+        stylers: {
+            visibility: 'off'
+        }
+    }, {
+        featureType: 'local',
+        elementType: 'all',
+        stylers: {
+            visibility: 'off'
+        }
+    }, {
+        featureType: 'arterial',
+        elementType: 'labels',
+        stylers: {
+            visibility: 'off'
+        }
+    }, {
+        featureType: 'boundary',
+        elementType: 'geometry.fill',
+        stylers: {
+            color: '#029fd4'
+        }
+    }, {
+        featureType: 'building',
+        elementType: 'all',
+        stylers: {
+            color: '#1a5787'
+        }
+    }, {
+        featureType: 'label',
+        elementType: 'all',
+        stylers: {
+            visibility: 'off'
+        }
+    }, {
+        featureType: 'poi',
+        elementType: 'labels.text.fill',
+        stylers: {
+            color: '#ffffff'
+        }
+    }, {
+        featureType: 'poi',
+        elementType: 'labels.text.stroke',
+        stylers: {
+            color: '#1e1c1c'
+        }
+    }]
+});
+
+
+</script>

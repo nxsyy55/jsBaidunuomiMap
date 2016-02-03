@@ -2,26 +2,47 @@
 <html>
     <head>
         <meta charset="utf-8"/>
-        <title> hehehe </title>
+        <title> 唯我独尊 </title>
         <script src="http://api.map.baidu.com/api?v=2.0&ak=Zi5NaQzHS9bakF87GklaIGd8"></script>
         <script type="text/javascript" src="data20.js"></script>
     </head>
 
     <style type="text/css">
-        html,body{
+    
+    html,body{
         margin:0;
         width:100%;
         height:100%;
         background:#ffffff;
     }
+
     #map{
-        width:100%;
+        width:75%;
         height:100%;
+        float:left;
     }
+
+    #result{
+        width:25%; 
+        font-size:16px;
+        line-height:20px;
+        float:right;
+    }
+
     </style>
 
     <body>
         <div id="map"></div>
+        <div id="result">
+            <div id="showcase"> 
+                <p> 百度糯米门店自动追踪系统BTA 版本：alpha 0.0.1</p>
+            </div>
+
+            <div>
+                <input type="button" value="没有用" onclick="clr"/>
+            </div>
+        </br>
+        </div>
     </body>
 </html>
 
@@ -33,24 +54,41 @@ map.centerAndZoom(cen, 13);
 map.enableScrollWheelZoom(true);
 map.addControl(new BMap.NavigationControl());
 
+for(var i = 0; i < long.length; i++){
+    var point = new BMap.Point(long[i], lat[i]);
 
+    var opts = {
+      position : point, 
+      offset   : new BMap.Size(10, -10)
+    };
+
+    var label = new BMap.Label("格子编号：" + (i + 1), opts); 
+
+    label.setStyle({
+         color : "red",
+         fontSize : "12px",
+         height : "20px",
+         lineHeight : "20px",
+         fontFamily:"微软雅黑"
+     });
+    map.addOverlay(label); 
+}
 
 var points = [];  
-
 for (var i = 0; i < long.length; i++) {
     points.push(new BMap.Point(long[i], lat[i]));
 }
 
 var options = {
     size: BMAP_POINT_SIZE_BIG,
-    shape: BMAP_POINT_SHAPE_CIRCLE,
+    shape: BMAP_POINT_SHAPE_SQUARE,
     color: '#1A69F4' //'#4349C7'
 }
 
 var pointCollection = new BMap.PointCollection(points, options);
 
 pointCollection.addEventListener('click', function (e) {
-    alert('格子里的门店数是：' + numbers[points.indexOf(e.point)]);  
+document.getElementById("result").innerHTML +=  '格子里的门店数是：' + numbers[points.indexOf(e.point)] + "</br>";  
 });
 map.addOverlay(pointCollection); 
 
