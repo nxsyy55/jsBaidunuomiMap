@@ -1,3 +1,4 @@
+# generate the js data for the maps
 library(readr)
 dat <- read_csv("locations.csv")
 long <- toString(dat[, 4])
@@ -14,10 +15,10 @@ str <- paste("var long = [", long, "];", "var lat = [", lat, "];",
              "var numbers = [", number, "];")
 write(str, file = 'data20.js')
 
-dat2 <- read_csv("finalResult10.csv")
+dat2 <- read_csv("finalResult45.csv")
 long <- toString(dat2[, 7])
 lat <- toString(dat2[, 8])
 number <- toString(dat2[, 6])
 str <- paste("var long = [", long, "];", "var lat = [", lat, "];", 
              "var numbers = [", number, "];")
-write(str, file = 'data.js')
+write(str, file = 'data45.js')

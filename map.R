@@ -1,33 +1,48 @@
+# get the data to draw the grids
+
 rm(list = ls())
 library(readr)
-n <- 20
 
+# CONSTANTS
+n <- 45
+longR <- 121.962232
 longl <- 121.026408
 latd <- 30.662036
-step1 <- (121.962232 - longl) / n
-step2 <- (31.621866 - latd) / n
+latU <- 31.931866
+
+# init.
+step1 <- (longR- longl) / n
+step2 <- (latU - latd) / n
+
+vl <- toString(longl + step1 * (1:n))
+hl <- toString(latd + step2 * (1:n))
+str <- paste("var longl = [", longl, "];",
+             "var longr = [", longR, "];",
+             "var latd = [", latd, "];",
+             "var latu = [", latU, "];",
+             "var vl = [", vl, "];", 
+             "var hl = [", hl, "];")
+write(str, file = 'gridData.js')
 
 longr <- longl + step1
 latu <- latd + step2
 long <- c(longl, longr)
 lat <- c(latu, latd)
 
-while (longr < 121.962232) {
+while (longr < longR) {
     longl <- longr
     longr <- longr + step1
     lt <- c(longl, longr)
     long <- rbind(long, lt)
 }
-#long[(n+1), 2] <- 121.962232
 
-while (latu < 31.621866) {
+while (latu < latU) {
     latd <- latu
     latu <- latu + step2
     
     lt <- c(latu, latd)
     lat <- rbind(lat, lt)
 }
-#lat[(n+1), 1] <- 31.621866
 
 final <- c()
 

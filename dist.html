@@ -42,8 +42,8 @@ var distName = ["上海市黄浦区","上海市徐汇区","上海市长宁区",
                 "上海市宝山区", "上海市嘉定区","上海市浦东新区","上海市金山区","上海市松江区",
                 "上海市青浦区","上海市奉贤区","上海市崇明县"]; /*16*/
 
-var color = ["#0F32FF","#1E33FF","#2D33FF","#3C34FF","#4B34FF","#5A35FF","#6935FF","#7836FF",
-             "#8736FF","#9637FF","#A537FF","#B438FF","#C338FF","#D239FF","#E139FF","#F03AFF"];
+var color = ["#0000FF","#0F00F0","#1E00E1","#2D00D2","#3C00C3","#4B00B4","#5A00A5","#690096","#780087",
+             "#870078","#960069","#A5005A","#B4004B","#C3003C","#D2002D","#E1001E"];
 
 var num = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
 
@@ -59,7 +59,7 @@ function getBoundary(add, col, number) {
         }
 
         for (var i = 0; i < count; i++) {
-            var ply = new BMap.Polygon(rs.boundaries[i], {strokeWeight: 0, fillColor: col2});
+            var ply = new BMap.Polygon(rs.boundaries[i], {strokeWeight: 0, fillColor: col2, fillOpacity: .85});
             ply.addEventListener("click", function(e){
                 alert("Some number here" + number2)});
             map.addOverlay(ply); 
@@ -76,7 +76,7 @@ map.setMapStyle ({
         featureType: 'water',
         elementType: 'all',
         stylers: {
-            color: '#044161'
+            color: '#000000'
         }
     }, {
         featureType: 'land',

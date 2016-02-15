@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title> Detailed </title>
+
+        <script src="http://api.map.baidu.com/api?v=2.0&ak=Zi5NaQzHS9bakF87GklaIGd8"></script>
+        <script type="text/javascript" src="dataDetail.js"></script>
+    </head>
+
+    <style type="text/css">
+        html,body{
+        margin:0;
+        width:100%;
+        height:100%;
+        background:#ffffff;
+    }
+    #map{
+        width:100%;
+        height:100%;
+    }
+    </style>
+
+    <body>
+        <div id="map"></div>
+
+        <script type="text/javascript">
+        // put codes here
+        var map = new BMap.Map('map');
+        var cen = new BMap.Point(121.570161,31.219631);
+        map.centerAndZoom(cen, 10);
+        map.enableScrollWheelZoom(true);
+        map.addControl(new BMap.NavigationControl());
+
+        // do the loop
+        var points = [];  
+         // 添加海量点数据
+        for (var i = 0; i < long.length; i++) {
+            points.push(new BMap.Point(long[i], lat[i]));
+        }
+
+        var options = {
+            size: BMAP_POINT_SIZE_SMALL,
+            shape: BMAP_POINT_SHAPE_STAR,
+            color: '#990099' //'#4349C7'
+        }
+
+        var pointCollection = new BMap.PointCollection(points, options);
+
+        // pointCollection.addEventListener('click', function (e) {
+        //     alert('格子里的门店数是：' + numbers[points.indexOf(e.point)]);  
+        // });
+        map.addOverlay(pointCollection);   
+
+var longl = 121.026408;
+var longr = 121.962232;
+var latd = 30.662036;
+var latu = 31.621866;
+var hl = [
+30.662036,
+30.68336556,
+30.70469512,
+30.72602468,
+30.74735424,
+30.7686838,
+30.79001336,
+30.81134292,
+30.83267248,
+30.85400204,
+30.8753316,
+30.89666116,
+30.91799072,
+30.93932028,
+30.96064984,
+30.9819794,
+31.00330896,
+31.02463852,
+31.04596808,
+31.06729764,
+31.0886272,
+31.10995676,
+31.13128632,
+31.15261588,
+31.17394544,
+31.195275,
+31.21660456,
+31.23793412,
+31.25926368,
+31.28059324,
+31.3019228,
+31.3232523600001,
+31.3445819200001,
+31.3659114800001,
+31.3872410400001,
+31.4085706000001,
+31.4299001600001,
+31.4512297200001,
+31.4725592800001,
+31.4938888400001,
+31.5152184000001,
+31.5365479600001,
+31.5578775200001,
+31.5792070800001,
+31.6005366400001
+];
+
+var vl = [
+121.026408,
+121.04720409,
+121.06800018,
+121.08879627,
+121.10959236,
+121.13038845,
+121.15118454,
+121.17198063,
+121.19277672,
+121.21357281,
+121.2343689,
+121.25516499,
+121.27596108,
+121.29675717,
+121.31755326,
+121.33834935,
+121.35914544,
+121.37994153,
+121.40073762,
+121.42153371,
+121.4423298,
+121.46312589,
+121.48392198,
+121.50471807,
+121.52551416,
+121.54631025,
+121.56710634,
+121.58790243,
+121.60869852,
+121.62949461,
+121.6502907,
+121.67108679,
+121.69188288,
+121.71267897,
+121.73347506,
+121.75427115,
+121.77506724,
+121.79586333,
+121.81665942,
+121.83745551,
+121.8582516,
+121.87904769,
+121.89984378,
+121.92063987,
+121.94143596
+];
+
+// draw the h line
+for (var i = 0; i < 100; i ++){
+    var polylineTem = new BMap.Polyline([new BMap.Point(longl, hl[i]), 
+                    new BMap.Point(longr, hl[i])],
+    {strokeColor:"blue", strokeWeight:1, strokeOpacity:0.5});  
+    map.addOverlay(polylineTem); 
+}
+
+for (var i = 0; i < 100; i ++){
+    var polylineTem = new BMap.Polyline([new BMap.Point(vl[i], latu), 
+                    new BMap.Point(vl[i], latd)],
+    {strokeColor:"blue", strokeWeight:1, strokeOpacity:0.5});  
+    map.addOverlay(polylineTem);     
+}
+        </script>
+    </body>
+</html>
